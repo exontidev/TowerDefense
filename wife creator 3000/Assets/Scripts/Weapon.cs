@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.SocialPlatforms;
 
 public class Weapon : MonoBehaviour
@@ -10,6 +11,11 @@ public class Weapon : MonoBehaviour
 
     private EnemyMovement[] enemies => FindObjectsByType<EnemyMovement>(FindObjectsSortMode.None);
     private EnemyMovement closestEnemy;
+
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform[] muzzles;
+    public float cooldown;
+    private bool canShot;
 
     private void Start()
     {
